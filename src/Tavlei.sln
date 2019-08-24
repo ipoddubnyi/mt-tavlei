@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MT.Tavlei.Console", "MT.Tavlei.Console\MT.Tavlei.Console.csproj", "{6A375671-C2F8-408D-828A-0C60296B2C5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MT.Tavlei.Core", "MT.Tavlei.Core\MT.Tavlei.Core.csproj", "{859ECB56-526D-4E67-B063-0E6947C0D2AE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{01AAB461-B0C3-42AC-BE1B-BD8F889E7E5E}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6A375671-C2F8-408D-828A-0C60296B2C5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A375671-C2F8-408D-828A-0C60296B2C5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A375671-C2F8-408D-828A-0C60296B2C5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A375671-C2F8-408D-828A-0C60296B2C5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{859ECB56-526D-4E67-B063-0E6947C0D2AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{859ECB56-526D-4E67-B063-0E6947C0D2AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{859ECB56-526D-4E67-B063-0E6947C0D2AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{859ECB56-526D-4E67-B063-0E6947C0D2AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {202BF059-2B23-4A98-8346-94D3ACAFE4D3}
+	EndGlobalSection
+EndGlobal
