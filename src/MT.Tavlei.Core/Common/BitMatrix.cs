@@ -4,8 +4,8 @@ namespace MT.Tavlei.Core.Common
 {
     public class BitMatrix
     {
-        private readonly int Width;
-        private readonly int Height;
+        public int Width { get; private set; }
+        public int Height { get; private set; }
 
         private readonly BitMatrixIndexer indexer;
         private BigInteger data;

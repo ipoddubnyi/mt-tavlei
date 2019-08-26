@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System.Collections.Generic;
+using System.Numerics;
 
 namespace MT.Tavlei.Core.Common
 {
@@ -19,6 +20,18 @@ namespace MT.Tavlei.Core.Common
         {
             big &= ~(BigInteger.One << bit);
             return big;
+        }
+
+        public static IEnumerable<Point> GetPoints(this BitMatrix matrix)
+        {
+            for (int y = 0; y < matrix.Height; ++y)
+            {
+                for (int x = 0; x < matrix.Width; ++x)
+                {
+                    if (matrix.Is(x, y))
+                        yield return new Point(x, y);
+                }
+            }
         }
     }
 }

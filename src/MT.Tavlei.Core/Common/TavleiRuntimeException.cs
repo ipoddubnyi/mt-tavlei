@@ -2,7 +2,7 @@
 
 namespace MT.Tavlei.Core.Common
 {
-    public class TavleiRuntimeException : Exception
+    public class TavleiRuntimeException : TavleiException
     {
         public TavleiRuntimeException(string message) :
             base(message)
