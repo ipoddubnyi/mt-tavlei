@@ -50,6 +50,8 @@
     <Compile Include="Common\TavleiException.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Board.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="StepInfo.cs" />
     <Compile Include="Types\CellType.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Types\PlayerSide.cs" />

@@ -109,7 +109,7 @@ namespace MT.Tavlei.Core
             return sb.ToString();
         }
 
-        public bool IsInField(int x, int y)
+        public bool IsOnBoard(int x, int y)
         {
             if (x < 0 || x >= WIDTH)
                 return false;
@@ -135,6 +135,11 @@ namespace MT.Tavlei.Core
             return GetCellType(x, y) == type;
         }
 
+        public bool IsFigure(int x, int y)
+        {
+            return figuresA.Is(x, y) || figuresD.Is(x, y) || figuresK.Is(x, y);
+        }
+
         public FigureType GetFigureType(int x, int y)
         {
             if (figuresA.Is(x, y))
@@ -146,7 +151,7 @@ namespace MT.Tavlei.Core
             if (figuresK.Is(x, y))
                 return FigureType.King;
 
-            throw new TavleiBoardException("Ячейка пуста.");
+            throw new TavleiBoardException("В ячейке нет фигуры.");
         }
 
         public PlayerSide GetPlayerSide(int x, int y)
@@ -157,7 +162,7 @@ namespace MT.Tavlei.Core
             if (figuresD.Is(x, y) || figuresK.Is(x, y))
                 return PlayerSide.Defender;
 
-            throw new TavleiBoardException("Ячейка пуста.");
+            throw new TavleiBoardException("В ячейке нет фигуры.");
         }
 
         public CellType GetCellType(int x, int y)

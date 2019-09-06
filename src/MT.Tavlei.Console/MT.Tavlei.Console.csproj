@@ -43,11 +43,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Engine\Commands\CommandUnknown.cs" />
+    <Compile Include="Engine\Commands\CommandFactory.cs" />
+    <Compile Include="Engine\Commands\CommandExit.cs" />
+    <Compile Include="Engine\Commands\CommandMove.cs" />
+    <Compile Include="Engine\Commands\ICommand.cs" />
+    <Compile Include="Engine\GameCycle.cs" />
+    <Compile Include="Engine\GameCycleExitException.cs" />
+    <Compile Include="Engine\GameCycleException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MT.Tavlei.Core\MT.Tavlei.Core.csproj">
+      <Project>{859ecb56-526d-4e67-b063-0e6947c0d2ae}</Project>
+      <Name>MT.Tavlei.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

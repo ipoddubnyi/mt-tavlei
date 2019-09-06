@@ -16,7 +16,7 @@ namespace MT.Tavlei.Core.Common
         }
 
         public BitMatrix(int width, int height, string data)
-            : this(width, height, BigInteger.Parse(data))
+            : this(width, height, BinToDec(data))
         {
         }
 
@@ -27,6 +27,17 @@ namespace MT.Tavlei.Core.Common
 
             indexer = new BitMatrixIndexer(width, height);
             this.data = data;
+        }
+
+        private static BigInteger BinToDec(string value)
+        {
+            BigInteger res = 0;
+            for (int i = value.Length - 1; i >= 0; --i)
+            {
+                res <<= 1;
+                res += (value[i] == '1') ? 1 : 0;
+            }
+            return res;
         }
 
         public bool IsEmpty()
@@ -43,13 +54,13 @@ namespace MT.Tavlei.Core.Common
         public void Set(int x, int y)
         {
             var bit = indexer.GetShift(x, y);
-            data.SetBit(bit);
+            data = data.SetBit(bit);
         }
 
         public void Reset(int x, int y)
         {
             var bit = indexer.GetShift(x, y);
-            data.ResetBit(bit);
+            data = data.ResetBit(bit);
         }
 
         public bool IsOnLeft(int x, int y, int step = 1)
@@ -91,8 +102,8 @@ namespace MT.Tavlei.Core.Common
 
         private void MoveBit(int shift0, int shift1)
         {
-            data.ResetBit(shift0);
-            data.SetBit(shift1);
+            data = data.ResetBit(shift0);
+            data = data.SetBit(shift1);
         }
 
         public BitMatrix GetZeroBitsCross(int x, int y, int max)
@@ -138,7 +149,7 @@ namespace MT.Tavlei.Core.Common
                 if (data.IsBitSet(i))
                     break;
 
-                line.SetBit(i);
+                line = line.SetBit(i);
             }
 
             return line;
@@ -159,7 +170,7 @@ namespace MT.Tavlei.Core.Common
                 if (data.IsBitSet(i))
                     break;
 
-                line.SetBit(i);
+                line = line.SetBit(i);
             }
 
             return line;
@@ -180,7 +191,7 @@ namespace MT.Tavlei.Core.Common
                 if (data.IsBitSet(i))
                     break;
 
-                line.SetBit(i);
+                line = line.SetBit(i);
             }
 
             return line;
@@ -201,7 +212,7 @@ namespace MT.Tavlei.Core.Common
                 if (data.IsBitSet(i))
                     break;
 
-                line.SetBit(i);
+                line = line.SetBit(i);
             }
 
             return line;
