@@ -1,4 +1,5 @@
 ﻿using MT.Tavlei.Core;
+using MT.Tavlei.Core.Common;
 
 namespace MT.Tavlei.Console.Engine.Commands
 {
@@ -6,6 +7,7 @@ namespace MT.Tavlei.Console.Engine.Commands
     {
         private readonly int x0, y0;
         private readonly int x1, y1;
+        private StepInfo result;
 
         public CommandMove(int x0, int y0, int x1, int y1)
         {
@@ -17,23 +19,14 @@ namespace MT.Tavlei.Console.Engine.Commands
 
         public bool Check(Game game, out string error)
         {
-            error = "";
-
-            if (!game.Board.IsFigure(x0, y0))
+            try
             {
-                error = "В исходной клетке нет фигуры.";
-                return false;
+                error = "";
+                game.CheckMove(x0, y0, x1, y1);
             }
-
-            if (!game.Board.IsPlayerSide(x0, y0, game.CurrentPlayer))
+            catch (TavleiGameRulesException ex)
             {
-                error = "В исходной клетке фигура другого игрока.";
-                return false;
-            }
-
-            if (game.Board.IsFigure(x1, y1))
-            {
-                error = "Клетка назначения занята.";
+                error = ex.Message;
                 return false;
             }
 
@@ -42,12 +35,10 @@ namespace MT.Tavlei.Console.Engine.Commands
 
         public void Do(Game game)
         {
-            game.Move(x0, y0, x1, y1);
+            result = game.Move(x0, y0, x1, y1);
 
-            // TODO: сделать захват
-            // TODO: сделать проверку на победу
-
-            game.NextPlayer();
+            if (!result.GameOver)
+                game.NextPlayer();
         }
 
         public static bool TryParse(string line, out CommandMove command)
@@ -79,6 +70,12 @@ namespace MT.Tavlei.Console.Engine.Commands
             {
             }
             return true;
+        }
+
+        public void Analize(Game game)
+        {
+            if (result.GameOver)
+                throw new GameCycleGameoverException();
         }
     }
 }

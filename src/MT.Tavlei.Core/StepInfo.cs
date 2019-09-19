@@ -40,6 +40,15 @@ namespace MT.Tavlei.Core
                 To.ToBoardCoordinates()    
             );
 
+            if (Captures.Count > 0)
+            {
+                buffer.AppendLine("Захваты:");
+                foreach (var capture in Captures)
+                {
+                    buffer.AppendLine("  " + capture.Value);
+                }
+            }
+
             return buffer.ToString();
         }
     }

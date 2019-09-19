@@ -49,6 +49,7 @@
     <Compile Include="Engine\Commands\CommandMove.cs" />
     <Compile Include="Engine\Commands\ICommand.cs" />
     <Compile Include="Engine\GameCycle.cs" />
+    <Compile Include="Engine\GameCycleGameoverException.cs" />
     <Compile Include="Engine\GameCycleExitException.cs" />
     <Compile Include="Engine\GameCycleException.cs" />
     <Compile Include="Program.cs" />

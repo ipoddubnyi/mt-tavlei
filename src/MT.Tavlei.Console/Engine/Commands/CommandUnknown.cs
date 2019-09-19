@@ -16,5 +16,9 @@ namespace MT.Tavlei.Console.Engine.Commands
         {
             throw new GameCycleException(Message);
         }
+
+        public void Analize(Game game)
+        {
+        }
     }
 }

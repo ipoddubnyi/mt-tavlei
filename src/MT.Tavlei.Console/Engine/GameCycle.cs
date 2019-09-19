@@ -28,6 +28,11 @@ namespace MT.Tavlei.Console.Engine
             catch (GameCycleExitException)
             {
             }
+            catch (GameCycleGameoverException)
+            {
+                Redraw();
+                Out.WriteLine("Игра окончена. Победил {0}", game.CurrentPlayer);
+            }
         }
 
         private void Redraw()
@@ -54,6 +59,7 @@ namespace MT.Tavlei.Console.Engine
             }
 
             command.Do(game);
+            command.Analize(game);
         }
 
         private void DrawBoard(Board board)

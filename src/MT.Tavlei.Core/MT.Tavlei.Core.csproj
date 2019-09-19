@@ -42,15 +42,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CaptureChecker.cs" />
     <Compile Include="Common\BitMatrix.cs" />
     <Compile Include="Common\BitMatrixIndexer.cs" />
     <Compile Include="Common\Extensions.cs" />
     <Compile Include="Common\Point.cs" />
+    <Compile Include="Common\TavleiGameRulesException.cs" />
     <Compile Include="Common\TavleiBoardException.cs" />
     <Compile Include="Common\TavleiException.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Board.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="GameoverChecker.cs" />
+    <Compile Include="Rules.cs" />
     <Compile Include="StepInfo.cs" />
     <Compile Include="Types\CellType.cs" />
     <Compile Include="Game.cs" />

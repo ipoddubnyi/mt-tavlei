@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace MT.Tavlei.Core.Common
 {
     public class TavleiRuntimeException : TavleiException

@@ -11,6 +11,7 @@ namespace MT.Tavlei.Core
         public delegate void GameOverHandler(FigureType figure, Point from, Point to);
 
         public Board Board { get; private set; }
+        public Rules Rules { get; private set; }
         private PlayerSide[] players;
         private int playerCurrent;
 
@@ -24,6 +25,7 @@ namespace MT.Tavlei.Core
         public Game()
         {
             Board = new Board();
+            Rules = new Rules(Board);
             players = new PlayerSide[2] { PlayerSide.Attacker, PlayerSide.Defender };
             playerCurrent = 0;
             History = new Stack<StepInfo>();
@@ -55,19 +57,54 @@ namespace MT.Tavlei.Core
 
         public StepInfo Move(int x0, int y0, int x1, int y1)
         {
-            var figure = Board.GetFigureType(x0, y0);
+            // TODO: отрефакторить функцию
 
-            // TODO
+            CheckMove(x0, y0, x1, y1);
+
             Board.Move(x0, y0, x1, y1);
 
+            var captures = Rules.GetCaptures(x1, y1);
+            var figure = Board.GetFigureType(x1, y1);
             var info = new StepInfo(figure, x0, y0, x1, y1);
+            
+            foreach (var point in captures)
+            {
+                var fig = Board.GetFigureType(point.X, point.Y);
+                info.Captures.Add(fig, point);
+            }
+
+            var gameover = new GameoverChecker(Board, captures);
+            if (gameover.Check())
+            {
+                info.GameOver = true;
+            }
+
+            // TODO: если у соперника не осталось ходов - он проиграл
+
+            if (!info.GameOver)
+            {
+                foreach (var point in captures)
+                    Board.Kill(point.X, point.Y);
+            }
+
             History.Push(info);
             return info;
         }
 
-        public void Analize()
+        public void CheckMove(int x0, int y0, int x1, int y1)
         {
-            // TODO
+            if (!Board.IsFigure(x0, y0))
+                throw new TavleiGameRulesException("В исходной клетке нет фигуры.");
+
+            if (!Board.IsPlayerSide(x0, y0, CurrentPlayer))
+                throw new TavleiGameRulesException("В исходной клетке фигура другого игрока.");
+
+            if (Board.IsFigure(x1, y1))
+                throw new TavleiGameRulesException("Клетка назначения занята.");
+
+            var steps = Rules.GetSteps(x0, y0);
+            if (!steps.Contains(new Point(x1, y1)))
+                throw new TavleiGameRulesException("В клетку назначения нельзя пойти.");
         }
     }
 }

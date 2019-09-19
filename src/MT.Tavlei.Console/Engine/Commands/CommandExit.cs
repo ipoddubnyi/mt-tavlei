@@ -33,5 +33,9 @@ namespace MT.Tavlei.Console.Engine.Commands
             }
             return true;
         }
+
+        public void Analize(Game game)
+        {
+        }
     }
 }

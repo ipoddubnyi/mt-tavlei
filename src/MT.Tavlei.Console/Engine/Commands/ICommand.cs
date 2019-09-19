@@ -7,5 +7,7 @@ namespace MT.Tavlei.Console.Engine.Commands
         bool Check(Game game, out string error);
 
         void Do(Game game);
+
+        void Analize(Game game);
     }
 }

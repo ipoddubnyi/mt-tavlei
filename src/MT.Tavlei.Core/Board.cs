@@ -122,11 +122,17 @@ namespace MT.Tavlei.Core
 
         public bool IsFigureType(int x, int y, FigureType type)
         {
+            if (!IsFigure(x, y))
+                return false;
+
             return GetFigureType(x, y) == type;
         }
 
         public bool IsPlayerSide(int x, int y, PlayerSide side)
         {
+            if (!IsFigure(x, y))
+                return false;
+
             return GetPlayerSide(x, y) == side;
         }
 
@@ -246,6 +252,16 @@ namespace MT.Tavlei.Core
             figuresK.Reset(x, y);
             figuresDK.Reset(x, y);
             figuresAll.Reset(x, y);
+        }
+
+        public bool IsKingOnThrone()
+        {
+            return !(figuresK & fieldThrone).IsEmpty();
+        }
+
+        public bool IsKingOnExit()
+        {
+            return !(figuresK & fieldExits).IsEmpty();
         }
     }
 }

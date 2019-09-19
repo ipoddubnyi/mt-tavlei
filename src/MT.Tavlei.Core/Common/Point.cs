@@ -17,6 +17,23 @@ namespace MT.Tavlei.Core.Common
             return new Point(X, Y);
         }
 
+        public override int GetHashCode()
+        {
+            var hashCode = 1861411795;
+            hashCode = hashCode * -1521134295 + X.GetHashCode();
+            hashCode = hashCode * -1521134295 + Y.GetHashCode();
+            return hashCode;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Point))
+                return false;
+
+            var pt = obj as Point;
+            return X == pt.X && Y == pt.Y;
+        }
+
         public static Point GetLeft(int x, int y)
         {
             return new Point(x - 1, y);
